@@ -22,9 +22,7 @@ class RegistrationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       
     }
-    
 
     @IBAction func submitBtn(_ sender: Any) {
         let strybrd = UIStoryboard(name: "Main", bundle: nil)
@@ -32,5 +30,4 @@ class RegistrationViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-   
 }
