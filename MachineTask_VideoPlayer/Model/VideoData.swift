@@ -14,7 +14,8 @@ class VideoData : UIViewController {
     
     let video1 = "https://drive.google.com/uc?export=open&id=109eVuq2bzdTmR-DY-fEoPClcCGzUu2RE"
     let video2 = "https://drive.google.com/uc?export=open&id=1K8Z0jGQObZEBGe9il1shuOr4nuHqupBo"
-    let video3 = "https://drive.google.com/uc?export=open&id=1Ihr2oVO0PNoklMDMHNasO_QECjCW8Nw0"
+    let video3 = "https://drive.google.com/uc?export=open&id=1M57kokeKR-MKl321RWA7nIMeh_B2MbRk"
+    let video4 = "https://drive.google.com/uc?export=open&id=1dD3F4FT9Y0uoEIU9sG8srOgyicLNY3om"
     
     func videoStr (dataNumber:Int)->String{
         switch dataNumber {
@@ -26,6 +27,9 @@ class VideoData : UIViewController {
             
         case 3:
             return video3
+         
+        case 4:
+            return video4
             
         default:
             return "error"

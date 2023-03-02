@@ -44,7 +44,7 @@ class VideoPlayerViewController: UIViewController {
         let offlineCheck = offlineDataChecker()
         print("offline data -->\(offlineCheck)")
         
-       
+        
         if offlineCheck == 1 {
             playOffline()
         }else{
@@ -68,7 +68,7 @@ class VideoPlayerViewController: UIViewController {
             prevBtn.isEnabled = false
             
         }
-      
+        
         let offlineCheck = offlineDataChecker()
         print("offline data -->\(offlineCheck)")
         if offlineCheck == 1 {
@@ -85,18 +85,18 @@ class VideoPlayerViewController: UIViewController {
         
         dataValue += 1
         print(dataValue)
-        if dataValue >= 3 {
+        if dataValue >= 4 {
             nextBtn.isEnabled = false
             
         }
-      
+        
         let offlineCheck = offlineDataChecker()
         print("offline data -->\(offlineCheck)")
         if offlineCheck == 1 {
             playOffline()
         }else{
             playOnline()
-
+            
             print("Playing video online")
         }
     }
@@ -136,7 +136,7 @@ class VideoPlayerViewController: UIViewController {
         let baseUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         
         let assetUrl = baseUrl.appendingPathComponent("MyFileSaveNames\(dataValue).mp4")
-       
+        
         let url = assetUrl
         print(url)
         let avAssest = AVAsset(url: url)
@@ -221,7 +221,7 @@ class MenuListController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
-       
+        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -232,6 +232,6 @@ class MenuListController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-
+        
     }
 }

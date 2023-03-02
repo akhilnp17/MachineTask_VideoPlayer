@@ -75,5 +75,4 @@ class OTPViewController: UIViewController,UITextFieldDelegate {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    
 }
