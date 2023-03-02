@@ -21,6 +21,7 @@ class VideoPlayerViewController: UIViewController {
     
     @IBOutlet weak var prevBtn: UIButton!
     
+    var currentPlayer: AVPlayer?
     var datass = VideoData()
     var dataValue = 1
     var urlValue = ""
@@ -33,16 +34,21 @@ class VideoPlayerViewController: UIViewController {
         downloadBtn.cornerRad(cRadious: 16)
         sideBtn.cornerRad(cRadious: 16)
         
-        let offline = playOffline()
+        let offlineCheck = offlineDataChecker()
+        print("offline data -->\(offlineCheck)")
         
-        urlValue = datass.videoStr(dataNumber: dataValue)
-        playVideo(str: urlValue)
+       
+        if offlineCheck == 1 {
+            playOffline()
+        }else{
+            playOnline()
+        }
         
     }
     
     @IBAction func downloadVideo(_ sender: UIButton) {
         
-        datass.download(videoNumber: dataValue)
+        dowmload()
     }
     
     @IBAction func previousVideo(_ sender: UIButton) {
@@ -55,8 +61,15 @@ class VideoPlayerViewController: UIViewController {
             prevBtn.isEnabled = false
             
         }
-        urlValue = datass.videoStr(dataNumber: dataValue)
-        playVideo(str: urlValue)
+      
+        let offlineCheck = offlineDataChecker()
+        print("offline data -->\(offlineCheck)")
+        if offlineCheck == 1 {
+            playOffline()
+        }else{
+            playOnline()
+            print("Playing video online")
+        }
     }
     
     @IBAction func nextVideo(_ sender: UIButton) {
@@ -69,62 +82,124 @@ class VideoPlayerViewController: UIViewController {
             nextBtn.isEnabled = false
             
         }
-        //   playOffline()
-        urlValue = datass.videoStr(dataNumber: dataValue)
-        playVideo(str: urlValue)
+      
+        let offlineCheck = offlineDataChecker()
+        print("offline data -->\(offlineCheck)")
+        if offlineCheck == 1 {
+            playOffline()
+        }else{
+            playOnline()
+
+            print("Playing video online")
+        }
     }
+    
     @IBAction func sideMenu(_ sender: UIButton) {
         
         
     }
     
-    func playVideo(str : String){
+    func playOnline(){
+        
+        currentPlayer?.pause()
+        
+        urlValue = datass.videoStr(dataNumber: dataValue)
         
         let videoPlayerViewController = AVPlayerViewController()
-        addChild(videoPlayerViewController)
         
-        let videoURL = URL(string: str)
+        let videoURL = URL(string: urlValue)
         let videoPlayerItem = AVPlayerItem(url: videoURL!)
         let videoPlayer = AVPlayer(playerItem: videoPlayerItem)
+        
+        addChild(videoPlayerViewController)
         videoView.addSubview(videoPlayerViewController.view)
         videoPlayerViewController.view.frame = videoView.bounds
         videoPlayerViewController.player = videoPlayer
         
-        videoPlayer.pause()
+        videoPlayer.play()
+        currentPlayer = videoPlayer
         
     }
     
-    func pauseVideo(){
+    func playOffline(){
         
-    }
-    
-    func playOffline()->Int{
+        currentPlayer?.pause()
         
-        var val = 0
         let baseUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         
         let assetUrl = baseUrl.appendingPathComponent("MyFileSaveNames\(dataValue).mp4")
-        
-        if assetUrl != nil {
-            val = 1
-        }else{
-            val = 0
-        }
+       
         let url = assetUrl
         print(url)
         let avAssest = AVAsset(url: url)
         let playerItem = AVPlayerItem(asset: avAssest)
-        
-        
         let player = AVPlayer(playerItem: playerItem)
-        
         let playerViewController = AVPlayerViewController()
         addChild(playerViewController)
         videoView.addSubview(playerViewController.view)
         playerViewController.view.frame = videoView.bounds
         playerViewController.player = player
-        player.pause()
+        player.play()
+        currentPlayer = player
         
+    }
+    
+    func offlineDataChecker()->Int{
+        
+        var val = 0
+        let docsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        
+        let destinationUrl = docsUrl.appendingPathComponent("MyFileSaveNames\(dataValue).mp4")
+        if(FileManager().fileExists(atPath: destinationUrl.path)){
+            print("-->File already exists--Checker")
+            val = 1
+        }
+        else{
+            print("No file exist")
+            val = 0
+        }
         return val
     }
+    
+    func dowmload(){
+        let videoUrl = urlValue
+        
+        let docsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        
+        
+        let destinationUrl = docsUrl.appendingPathComponent("MyFileSaveNames\(dataValue).mp4")
+        if(FileManager().fileExists(atPath: destinationUrl.path)){
+            print("-->File already exists")
+        }
+        else{
+            
+            var request = URLRequest(url: URL(string: videoUrl)!)
+            request.httpMethod = "GET"
+            let urlSession = URLSession(configuration: .default)
+            let task = urlSession.dataTask(with: request, completionHandler: { (data, response, error) in
+                if(error != nil){
+                    print("some error occured")
+                    return
+                }
+                if let response = response as? HTTPURLResponse{
+                    if response.statusCode == 200{
+                        DispatchQueue.main.async {
+                            if let data = data{
+                                if let _ = try? data.write(to: destinationUrl, options: Data.WritingOptions.atomic){
+                                    print("Video Saved")
+                                }
+                                else{
+                                    print("error again")
+                                }
+                            }
+                        }
+                    }
+                }
+            })
+            task.resume()
+            
+        }
+    }
 }
+
+

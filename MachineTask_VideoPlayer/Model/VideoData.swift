@@ -32,43 +32,4 @@ class VideoData : UIViewController {
         }
     }
     
-    func download(videoNumber:Int){
-        
-        let videoUrl = "https://drive.google.com/uc?export=open&id=1ARUHxWqOM-PWaPt3x6ygCEo5j8tUOZ-v"
-        
-        let docsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        
-        let destinationUrl = docsUrl.appendingPathComponent("MyFileSaveName\(videoNumber).mp4")
-        if(FileManager().fileExists(atPath: destinationUrl.path)){
-            print("file already exists")
-        }
-        else{
-            
-            var request = URLRequest(url: URL(string: videoUrl)!)
-            request.httpMethod = "GET"
-            let urlSession = URLSession(configuration: .default)
-            let task = urlSession.dataTask(with: request, completionHandler: { (data, response, error) in
-                if(error != nil){
-                    print("some error occured")
-                    return
-                }
-                if let response = response as? HTTPURLResponse{
-                    if response.statusCode == 200{
-                        DispatchQueue.main.async {
-                            if let data = data{
-                                if let _ = try? data.write(to: destinationUrl, options: Data.WritingOptions.atomic){
-                                    print("url data written")
-                                }
-                                else{
-                                    print("error again")
-                                }
-                            }
-                        }
-                    }
-                }
-            })
-            task.resume()
-            
-        }
-    }
 }
