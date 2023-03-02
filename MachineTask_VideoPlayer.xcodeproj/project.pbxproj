@@ -19,6 +19,7 @@
 		30BC5BB029B04944002078D9 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BC5BAF29B04944002078D9 /* RegistrationViewController.swift */; };
 		30BC5BB229B04952002078D9 /* OTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BC5BB129B04952002078D9 /* OTPViewController.swift */; };
 		30BC5BB729B0663A002078D9 /* VideoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BC5BB629B0663A002078D9 /* VideoData.swift */; };
+		30FEEF0729B0F820001B1528 /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 30FEEF0629B0F820001B1528 /* SideMenu */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30FEEF0729B0F820001B1528 /* SideMenu in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +127,9 @@
 			dependencies = (
 			);
 			name = MachineTask_VideoPlayer;
+			packageProductDependencies = (
+				30FEEF0629B0F820001B1528 /* SideMenu */,
+			);
 			productName = MachineTask_VideoPlayer;
 			productReference = 307BD63629AFA8FE000CAA89 /* MachineTask_VideoPlayer.app */;
 			productType = "com.apple.product-type.application";
@@ -153,6 +158,9 @@
 				Base,
 			);
 			mainGroup = 307BD62D29AFA8FD000CAA89;
+			packageReferences = (
+				30FEEF0529B0F820001B1528 /* XCRemoteSwiftPackageReference "SideMenu" */,
+			);
 			productRefGroup = 307BD63729AFA8FE000CAA89 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -406,6 +414,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		30FEEF0529B0F820001B1528 /* XCRemoteSwiftPackageReference "SideMenu" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jonkykong/SideMenu";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		30FEEF0629B0F820001B1528 /* SideMenu */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 30FEEF0529B0F820001B1528 /* XCRemoteSwiftPackageReference "SideMenu" */;
+			productName = SideMenu;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		307BD64229AFA8FE000CAA89 /* MachineTask_VideoPlayer.xcdatamodeld */ = {

@@ -13,7 +13,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       
+       addPaddingAndBorder(to: mobileTf)
     }
     
     @IBAction func loginBtn(_ sender: UIButton) {
@@ -28,5 +28,14 @@ class LoginViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    func addPaddingAndBorder(to textfield: UITextField) {
+      
+        let leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 8, height: 0.0))
+        let rightView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 8, height: 2.0))
+        textfield.leftView = leftView
+        textfield.rightView = rightView
+        textfield.leftViewMode = .always
+        textfield.rightViewMode = .always
+    }
     
 }
