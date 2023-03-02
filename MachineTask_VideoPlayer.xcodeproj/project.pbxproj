@@ -18,6 +18,7 @@
 		30BC5BAE29B04933002078D9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BC5BAD29B04933002078D9 /* LoginViewController.swift */; };
 		30BC5BB029B04944002078D9 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BC5BAF29B04944002078D9 /* RegistrationViewController.swift */; };
 		30BC5BB229B04952002078D9 /* OTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BC5BB129B04952002078D9 /* OTPViewController.swift */; };
+		30BC5BB729B0663A002078D9 /* VideoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BC5BB629B0663A002078D9 /* VideoData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		30BC5BAD29B04933002078D9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		30BC5BAF29B04944002078D9 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		30BC5BB129B04952002078D9 /* OTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPViewController.swift; sourceTree = "<group>"; };
+		30BC5BB629B0663A002078D9 /* VideoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 		30BC5BB329B05C08002078D9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				30BC5BB629B0663A002078D9 /* VideoData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				307BD63A29AFA8FE000CAA89 /* AppDelegate.swift in Sources */,
 				30BC5BAC29B02E23002078D9 /* Constant.swift in Sources */,
 				30BC5BB229B04952002078D9 /* OTPViewController.swift in Sources */,
+				30BC5BB729B0663A002078D9 /* VideoData.swift in Sources */,
 				30BC5BB029B04944002078D9 /* RegistrationViewController.swift in Sources */,
 				307BD63C29AFA8FE000CAA89 /* SceneDelegate.swift in Sources */,
 				307BD64429AFA8FE000CAA89 /* MachineTask_VideoPlayer.xcdatamodeld in Sources */,
@@ -336,8 +340,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -364,8 +368,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

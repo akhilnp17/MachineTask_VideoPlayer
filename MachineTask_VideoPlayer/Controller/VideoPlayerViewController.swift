@@ -8,6 +8,7 @@
 import UIKit
 
 class VideoPlayerViewController: UIViewController {
+    
     @IBOutlet weak var profileBtn: UIButton!
     
     @IBOutlet weak var sideBtn: UIButton!
@@ -25,7 +26,6 @@ class VideoPlayerViewController: UIViewController {
         prevBtn.cornerRad(cRadious: 16)
         downloadBtn.cornerRad(cRadious: 16)
         sideBtn.cornerRad(cRadious: 16)
-        
         
     }
     
